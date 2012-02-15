@@ -1,6 +1,6 @@
 = enumerator_ex
 
- https://dsisnero.github.com/enumerator_ex
+https://github.com/dsisnero/enumerator_ex
 
 == DESCRIPTION:
 
