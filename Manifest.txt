@@ -1,0 +1,13 @@
+.autotest
+.rspec
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+bin/enumerator_ex
+lib/enumerator_ex.rb
+lib/enumerator_ex/extension.rb
+lib/enumerator_ex/generators.rb
+spec/enumerator_ex_extension_spec.rb
+spec/enumerator_ex_spec.rb
+spec/spec_helper.rb
