@@ -3,39 +3,31 @@ require 'enumerable_lz/enumerable_ex'
 require File.join( File.dirname(__FILE__) , 'generators')
 require File.join(File.dirname(__FILE__),'..','enumerator_ex')
 
-# module EnumerableEx
-
-#   module InstanceMethods
-#     def weave(*enums)
-#       enums[0,0] = self
-#       self.class.weave(enums)
-#     end
-
-    
-
-    
-
-#   end
-
-# end
-
-
 
 module Enumerable
 
   extend EnumeratorEx::Generators
   
-
+  #Intersperse several enumerator/enumerables, until all are
+  #exhausted.  Returns an Enumerator
+  #
+  #  enum = EnumeratorEx.weave([1,2,3],%w[a b], %w[g h i j]
+  #  enum.to_a = [1, 'a', 'g',2,'b','h',3,'i','j']
   def weave(*enums)
     enums[0,0] = self.to_enum
     result = EnumeratorEx.weave(*enums)
   end
-  
+
+  # append enumerator/enumerables to the end.  returns an Enumerator
+  #
+  # enum = EnumeratorEx.cat([1,2,3],%w[a b], %w[g h i j])
+  # enum.to_a = [1,2,3,'a','b','g','h','i','j']
   def cat(*enums)
     enums[0,0] = self.to_enum
     result = EnumeratorEx.cat(*enums)
   end
 
+  # partition but in a lazy way
   def partition_lz(&block)
     e1 = self.to_enum
     e2 = self.to_enum
