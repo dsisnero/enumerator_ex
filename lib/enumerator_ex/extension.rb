@@ -35,6 +35,14 @@ module Enumerable
     e2_enum = e2.filter{|item| ! block.call(item)}
     [e1_enum,e2_enum]
   end
+
+  def tee(n)
+    enums = []
+    n.times do 
+      enums << Enumerator.new(self)
+    end
+    yield *enums
+  end
   
 
 end
